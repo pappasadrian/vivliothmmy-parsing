@@ -23,6 +23,7 @@ done
 
 rm *.html
 
+mkdir docs
 cp thesis-list.csv docs/out.csv
 cd docs
 
