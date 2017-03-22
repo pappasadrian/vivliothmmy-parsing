@@ -6,7 +6,8 @@ cd docs
 for f in *.pdf
 do
 	#export pdf as text and save results to csv
-    pdftotext $f - | wc -w | sed s/"^"/"$f,"/ >> wordcount.csv
+	#spaces thingy fixes awkward space bug
+	pdftotext $f - | tr ' ' ' ' |  wc -w | sed s/"^"/"$f,"/ >> wordcount.csvdone
 done
 
 mv wordcount.csv ../
