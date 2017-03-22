@@ -16,3 +16,7 @@ This script does the initial grab of the whole database of theses. It will save 
 This will go through the downloaded PDFs and extract a pagecount for each one, saving the result in a new CSV file.
 
 Uses the pdfinfo linux utility.
+
+## fontanalysis.sh
+
+Get a statistical font usage analysis. See what fonts are mostly used in Thesis writing (results will not surprise you)
