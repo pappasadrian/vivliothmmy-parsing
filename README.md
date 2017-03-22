@@ -21,6 +21,14 @@ This will go through the downloaded PDFs and extract a pagecount for each one, s
 
 Uses the pdfinfo linux utility.
 
+## softwareused.sh
+
+Find out which software was used to export the final version of each Thesis' PDF, and see which are mostly used.
+
+Used the pdfinfo linux utility.
+
+CAUTION: This will not find software used in all files, but works for a good majority. 
+
 ## wordcount.sh
 
 Get the word count of each thesis and save all results to a CSV file.
