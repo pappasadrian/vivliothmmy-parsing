@@ -17,6 +17,12 @@ This will go through the downloaded PDFs and extract a pagecount for each one, s
 
 Uses the pdfinfo linux utility.
 
+## wordcount.sh
+
+Get the word count of each thesis and save all results to a CSV file.
+
+Uses the pdftotext linux utility.
+
 ## fontanalysis.sh
 
 Get a statistical font usage analysis. See what fonts are mostly used in Thesis writing (results will not surprise you)
