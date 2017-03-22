@@ -5,6 +5,14 @@ Several hundreds of Theses are uploaded and publicly available on the Department
 
 By parsing and looking into the data, much more info can be extracted.
 
+This probably only works on linux.
+
 ## download.sh
 
-This script does the initial grab of the whole database of theses. It will save all theses (PDFs) in a new "docs" subfolder, and will create a CSV file with all available data for each thesis from the webpage
+This script does the initial grab of the whole database of theses. It will save all theses (PDFs) in a new "docs" subfolder, and will create a CSV file with all available data for each thesis from the webpage.
+
+## pagecount.sh
+
+This will go through the downloaded PDFs and extract a pagecount for each one, saving the result in a new CSV file.
+
+Uses the pdfinfo linux utility.
