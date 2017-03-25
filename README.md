@@ -36,3 +36,9 @@ Get the word count of each thesis and save all results to a CSV file.
 Uses the pdftotext linux utility.
 
 CAUTION: this is buggy as hell, does not count words correctly in some cases. #Thanks_PDF
+
+## wordfrequency.sh
+
+Get a word frequency analysis (number of occurence of each word), for each document and for all documents in total.
+
+Removes numbers and short words from the totals.
