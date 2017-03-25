@@ -41,4 +41,6 @@ CAUTION: this is buggy as hell, does not count words correctly in some cases. #T
 
 Get a word frequency analysis (number of occurence of each word), for each document and for all documents in total.
 
+Saves results in an individual CSV file for each input file, retaining filenames.
+
 Removes numbers and short words from the totals.
