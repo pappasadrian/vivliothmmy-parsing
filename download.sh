@@ -17,22 +17,31 @@ do
     wget http://vivliothmmy2.ee.auth.gr/en/search-thesis/?listpage=$currentpage
     mv index.* page.html
     #parse results into csv
-    grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' page.html | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\|SPAN\|THEAD\|FORM\|DIV\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/\t/Ig' | tail -n +2 | sed 's/ \+/ /g' | sed 's/[ ]\/[ ]/\//g' | sed 's/ \t/\t/g' | sed s/"<a href=\""/""/g | sed s/"\.pdf.*"/"\.pdf"/g >> thesis-list.csv
+    grep -i -e '</\?TABLE\|</\?TD\|</\?TR\|</\?TH' page.html | sed 's/^[\ \t]*//g' | tr -d '\n' | sed 's/<\/TR[^>]*>/\n/Ig'  | sed 's/<\/\?\(TABLE\|TR\|SPAN\|THEAD\|FORM\|DIV\)[^>]*>//Ig' | sed 's/^<T[DH][^>]*>\|<\/\?T[DH][^>]*>$//Ig' | sed 's/<\/T[DH][^>]*><T[DH][^>]*>/\t/Ig' | tail -n +2 | sed 's/ \+/ /g' | sed 's/[ ]\/[ ]/\//g' | sed 's/ \t/\t/g' | sed s/"<a href=\""/""/g | sed s/"\.pdf.*"/"\.pdf"/g >> out.csv
     #csv separator is the tab, because all other typical characters are used in the content
 done 
 
 rm *.html
+awk '{printf("%d\t%s\n", NR, $0)}' out.csv > thesis-list.csv
+rm out.csv
 
 mkdir docs
 cp thesis-list.csv docs/out.csv
 cd docs
-
+cat out.csv
 #for each line in the csv file - for each individual thesis
-echo out.csv | while read line
+cat out.csv | while read line
 do
-    url=`cut -d$'\t' -f6  $line`
-    #download it and save it with its original name
-    wget -q $url
-done
-rm *.csv
 
+    echo "$line" | cut -d$'\t' -f1 | sed s/"$"/".pdf"/ > filename
+    echo "$line" | cut -d$'\t' -f7 > url
+    url=`cat url`
+    rm url
+    filename=`cat filename`
+    rm filename
+     
+#    #download it and save it with its original name
+    wget -O $filename $url
+
+done
+rm out.csv
